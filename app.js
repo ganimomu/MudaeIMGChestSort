@@ -35,7 +35,6 @@ function grab() {
     console.log(albumId);
     
     fetch(url+albumId, {
-        method: GET,
         headers: {
             "Authorization": token,
             "Access-Control-Request-Method": "GET, OPTIONS",
