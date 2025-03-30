@@ -66,6 +66,7 @@ function grab() {
     }).then(data => {
         console.log(data);
         grabData = data;
+        output="";
         grabData.data.images.forEach(element => {
             if (element) {
 
@@ -73,7 +74,7 @@ function grab() {
             }
         });
         output = output.slice(0, output.length - 3);
-        document.getElementById("txtOut").value = output;
+        document.getElementById("txtOut").value = output; 
         document.getElementById("divCopy").removeAttribute("hidden");
     }).catch(error => {
         console.log("Error: ", error);
