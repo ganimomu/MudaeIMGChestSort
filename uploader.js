@@ -174,7 +174,6 @@
                     if (title) form.append("title", title);
                     form.append("privacy", $("selPrivacy").value);
                     if ($("chkNsfw").checked) form.append("nsfw", "true");
-                    if ($("chkAnon").checked) form.append("anonymous", "true");
                 }
                 batches[b].forEach(it => form.append("images[]", it.blob, it.outName));
 

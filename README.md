@@ -14,7 +14,7 @@ Usage is simple, only previous requirement is to have an account already created
 The **Uploader** tab lets you skip the IMG Chest website entirely:
 
 - Drop, pick or paste images in (almost) any format. Each one is converted to PNG in the browser, since PNG is the format the bot accepts. Nothing is sent anywhere except the finished PNGs.
-- Press **Upload**. The images become one new IMG Chest post (title / privacy / NSFW / anonymous are optional settings).
+- Press **Upload**. The images become one new IMG Chest post (title / privacy / NSFW are optional settings; IMG Chest currently has anonymous uploads disabled, so posts are always tied to your account).
 - You get the album URL and the ready-to-paste `link $ link $ link` string right away. The album URL is also placed in the **Grabber** tab.
 
 Notes:

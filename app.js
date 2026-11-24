@@ -51,13 +51,15 @@ function parseAlbumId(input) {
     return /^[A-Za-z0-9]+$/.test(s) ? s : null; // bare ID
 }
 
-function describeApiError(res, body) {
+function describeApiError(res, body, raw = "") {
     if (res.status === 401) return "IMG Chest rejected the API token (401).";
     if (res.status === 429) return "IMG Chest rate limit reached (429). Wait a minute and try again.";
     let detail = body && body.message;
     if (body && body.errors && typeof body.errors === "object") {
         detail = Object.values(body.errors).flat().join(" ");
     }
+    // No readable message: show (a short piece of) whatever the server sent
+    if (!detail && raw) detail = raw.replace(/\s+/g, " ").trim().slice(0, 200);
     return `IMG Chest error ${res.status}${detail ? ": " + detail : ""}`;
 }
 
@@ -76,9 +78,10 @@ async function apiRequest(path, options = {}) {
     } catch (e) {
         throw new Error("Couldn't reach IMG Chest (network problem, or the browser blocked the request).");
     }
+    const raw = await res.text().catch(() => "");
     let body = null;
-    try { body = await res.json(); } catch (e) { /* non-JSON body */ }
-    if (!res.ok) throw new Error(describeApiError(res, body));
+    try { body = JSON.parse(raw); } catch (e) { /* non-JSON body */ }
+    if (!res.ok) throw new Error(describeApiError(res, body, raw));
     return body;
 }
 
