@@ -1,0 +1,69 @@
+/* Uploader tab */
+.drop-zone {
+    border: 2px dashed #adb5bd;
+    border-radius: .5rem;
+    padding: 2rem 1rem;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color .15s, border-color .15s;
+}
+
+.drop-zone:hover,
+.drop-zone:focus-visible,
+.drop-zone.dragover {
+    border-color: #0d6efd;
+    background-color: rgba(13, 110, 253, .06);
+    outline: none;
+}
+
+.file-list:empty {
+    display: none;
+}
+
+.file-list li {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    padding: .5rem;
+    border: 1px solid #dee2e6;
+    border-radius: .375rem;
+    margin-bottom: .4rem;
+}
+
+.file-list .thumb {
+    flex: 0 0 48px;
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: .25rem;
+    background: repeating-conic-gradient(#e9ecef 0% 25%, #fff 0% 50%) 50% / 12px 12px;
+}
+
+.file-list .thumb.empty {
+    display: inline-block;
+}
+
+.file-list .info {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.file-list .name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.file-list .meta {
+    font-size: .8rem;
+    color: #6c757d;
+}
+
+.file-list .meta.error {
+    color: #dc3545;
+}
+
+#txtOut,
+#txtUpOut {
+    min-height: 7rem;
+}

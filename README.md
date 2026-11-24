@@ -9,6 +9,22 @@ Usage is simple, only previous requirement is to have an account already created
 - Paste Album URL
 + Get your images linked one by one and already separated by Mudae's default separator, "$"
 
+## Uploader
+
+The **Uploader** tab lets you skip the IMG Chest website entirely:
+
+- Drop, pick or paste images in (almost) any format. Each one is converted to PNG in the browser, since PNG is the format the bot accepts. Nothing is sent anywhere except the finished PNGs.
+- Press **Upload**. The images become one new IMG Chest post (title / privacy / NSFW / anonymous are optional settings).
+- You get the album URL and the ready-to-paste `link $ link $ link` string right away. The album URL is also placed in the **Grabber** tab.
+
+Notes:
+- Converted natively by the browser: JPG, WEBP, GIF (first frame only), BMP, AVIF, ICO, SVG. HEIC/HEIF and TIFF are handled by small decoder libraries that load from jsDelivr the first time one of those files is added (needs internet).
+- PNGs already under the size limit are uploaded untouched.
+- IMG Chest accepts up to 20 files / 20 MB each per request. Larger selections are uploaded in batches of 20 to the same post, and PNGs over 20 MB are shrunk automatically (can be switched off).
+- If a batch fails halfway (rate limit, connection), the button turns into **Retry remaining** and appends the rest to the same post.
+
+Files: `app.js` (shared helpers + Grabber), `converter.js` (any image to PNG), `uploader.js` (Uploader tab).
+
 ***
 
 At the moment, the app only works with IMGChest service (IMGUR probably won't be implemented in any near) and requires you to provide your own API key to be able to use it. Alternatives can be made to provide an API key directly from the app but giving the user the option to provide it's own API key would avoid hitting IMGChest API rate limits in rare occasions.
